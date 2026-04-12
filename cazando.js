@@ -34,6 +34,24 @@ function moverIzquierda() {
     graficarGato();
 }
 
+function moverDerecha() {
+    gatoX += 10;
+    limpiarCanvas();
+    graficarGato();
+}
+
+function moverArriba() {
+    gatoY -= 10;
+    limpiarCanvas();
+    graficarGato();
+}
+
+function moverAbajo() {
+    gatoY += 10;
+    limpiarCanvas();
+    graficarGato();
+}
+
 function iniciarJuego() {
     graficarGato();
     graficarComida();
