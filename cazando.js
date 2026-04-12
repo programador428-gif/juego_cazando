@@ -8,7 +8,7 @@ let gatoY = canvas.height / 2 - ALTO_GATO;
 let gatoX = canvas.width / 2 - ANCHO_GATO / 2;
 let comidaY = canvas.height - ALTO_COMIDA;
 let comidaX = canvas.width - ANCHO_COMIDA;
-
+let puntaje = 0;
 // Funciones
 
 function graficarRectangulo(x, y, ancho, alto, color) {
@@ -67,7 +67,10 @@ function detectarColisiones() {
         gatoY + ALTO_GATO > comidaY &&
         gatoY < comidaY + ALTO_COMIDA
     ) {
-        alert("Miau!")
+        comidaX = generarAleatorio(0, canvas.width - ANCHO_COMIDA);
+        comidaY = generarAleatorio(0, canvas.height - ALTO_COMIDA);
+        puntaje++;
+        mostrarEnSpan('puntos', puntaje);
     }
 }
 
