@@ -9,6 +9,7 @@ let gatoX = canvas.width / 2 - ANCHO_GATO / 2;
 let comidaY = canvas.height - ALTO_COMIDA;
 let comidaX = canvas.width - ANCHO_COMIDA;
 let puntaje = 0;
+let tiempo = 10;
 // Funciones
 
 function graficarRectangulo(x, y, ancho, alto, color) {
@@ -72,6 +73,21 @@ function detectarColisiones() {
         puntaje++;
         mostrarEnSpan('puntos', puntaje);
     }
+}
+
+function iniciarCuentaRegresiva() {
+    let cronometro = setInterval(function () {
+        tiempo--;
+        mostrarEnSpan('tiempo', tiempo);
+
+        if (tiempo <= 0) {
+            clearInterval(cronometro);
+        }
+    }, 1000);
+}
+
+if (!(tiempo <= 0)) {
+    iniciarCuentaRegresiva();
 }
 
 function iniciarJuego() {
