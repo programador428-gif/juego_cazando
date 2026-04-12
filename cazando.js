@@ -32,24 +32,43 @@ function moverIzquierda() {
     gatoX -= 10;
     limpiarCanvas();
     graficarGato();
+    graficarComida();
+    detectarColisiones();
 }
 
 function moverDerecha() {
     gatoX += 10;
     limpiarCanvas();
     graficarGato();
+    graficarComida();
+    detectarColisiones();
 }
 
 function moverArriba() {
     gatoY -= 10;
     limpiarCanvas();
     graficarGato();
+    graficarComida();
+    detectarColisiones();
 }
 
 function moverAbajo() {
     gatoY += 10;
     limpiarCanvas();
     graficarGato();
+    graficarComida();
+    detectarColisiones();
+}
+
+function detectarColisiones() {
+    if (
+        gatoX + ANCHO_GATO > comidaX &&
+        gatoX < comidaX + ANCHO_COMIDA &&
+        gatoY + ALTO_GATO > comidaY &&
+        gatoY < comidaY + ALTO_COMIDA
+    ) {
+        alert("Miau!")
+    }
 }
 
 function iniciarJuego() {
