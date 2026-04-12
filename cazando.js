@@ -75,7 +75,7 @@ function detectarColisiones() {
     }
 }
 
-function iniciarCuentaRegresiva() {
+function restarTiempo() {
     let cronometro = setInterval(function () {
         tiempo--;
         mostrarEnSpan('tiempo', tiempo);
@@ -87,7 +87,7 @@ function iniciarCuentaRegresiva() {
 }
 
 if (!(tiempo <= 0)) {
-    iniciarCuentaRegresiva();
+    restarTiempo();
 }
 
 function iniciarJuego() {
