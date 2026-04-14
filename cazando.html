@@ -1,35 +1,61 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐱 CAZANDO - ¡Gato y Ratón! 🐭</title>
+    <link rel="stylesheet" href="cazando.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body onload="iniciarJuego()">
+    <div class="main-container">
+      <header class="tv-header">
+        <h1 class="titulo-cartoon">CAZANDO</h1>
+        <p class="subtitulo">Un episodio de: <span>Dilan Solorzano</span></p>
+      </header>
 
-<head>
-  <title>Juego Cazando</title>
-  <link rel="stylesheet" href="cazando.css">
-</head>
+      <div class="game-board">
+        <div class="stats-container">
+          <div class="stat-bubble">
+            <span class="icon">🧀</span>
+            <span id="puntos" class="value">0</span>
+          </div>
+          <div class="stat-bubble">
+            <span class="icon">⏱️</span>
+            <span id="tiempo" class="value">10</span>
+          </div>
+        </div>
 
-<body onload="iniciarJuego()">
+        <div class="canvas-wrapper">
+          <canvas id="areaJuego" width="500" height="500"></canvas>
+          <p id="mensaje"></p>
+        </div>
 
-  <h1>Juego Cazando</h1>
-  <p>Autor: Dilan Solorzano</p>
+        <div class="controls-section">
+          <div class="d-pad">
+            <button class="btn-mando up" onclick="moverArriba()">▲</button>
+            <div class="middle-row">
+              <button class="btn-mando left" onclick="moverIzquierda()">
+                ◀
+              </button>
+              <button class="btn-mando down" onclick="moverAbajo()">▼</button>
+              <button class="btn-mando right" onclick="moverDerecha()">
+                ▶
+              </button>
+            </div>
+          </div>
 
-  <canvas id="areaJuego" width="500" height="500"></canvas>
-  <div class="controles">
-    <button onclick="moverArriba()">⬆</button>
-    <br>
-    <button onclick="moverIzquierda()">⬅</button>
-    <button onclick="moverAbajo()">⬇</button>
-    <button onclick="moverDerecha()"">➡</button>
-  </div>
+          <button class="btn-reset-cartoon" onclick="reiniciar()">
+            <span class="text">¡REINICIAR!</span>
+          </button>
+        </div>
+      </div>
+    </div>
 
-
-  <div class="panel">
-    <span>Puntos: <span id="puntos">0</span></span>
-    <span>Tiempo: <span id="tiempo">10</span></span>
-    <button onclick="reiniciar()">Reiniciar</button>
-  </div>
-
-  <p id="mensaje"></p>
-  <script src="cazando.js"></script>
-  <script src="utils.js"></script>
-</body>
-
+    <script src="cazando.js"></script>
+    <script src="utils.js"></script>
+  </body>
 </html>

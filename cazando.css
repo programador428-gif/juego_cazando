@@ -1,45 +1,179 @@
+/* Paleta de colores Tom y Jerry */
+:root {
+  --color-gato: #5c7894; /* Gris azulado */
+  --color-raton: #966d4f; /* Marrón */
+  --queso: #ffcc00;
+  --borde-gordo: #222;
+  --rojo-cartoon: #e63946;
+  --fondo-suave: #f1faee;
+}
+
 body {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background: #a879ff;
   margin: 0;
-  padding: 20px;
-  color: #fff;
-}
-
-h1 {
-  margin-bottom: 5px;
-  color: rgb(0, 0, 0);
-}
-
-.panel {
-  margin: 15px 0;
-  font-size: 18px;
+  padding: 0;
+  font-family: "Fredoka One", cursive;
+  background-color: #ffd166;
+  background-image:
+    radial-gradient(#f4a261 20%, transparent 20%),
+    radial-gradient(#f4a261 20%, transparent 20%);
+  background-size: 40px 40px;
+  background-position:
+    0 0,
+    20px 20px;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main-container {
+  width: 90%;
+  max-width: 700px;
+  background: white;
+  border: 6px solid var(--borde-gordo);
+  border-radius: 30px;
+  padding: 20px;
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Título estilo Intro de Caricatura */
+.titulo-cartoon {
+  font-family: "Bangers", cursive;
+  font-size: 5rem;
+  color: var(--rojo-cartoon);
+  text-align: center;
+  margin: 0;
+  letter-spacing: 5px;
+  -webkit-text-stroke: 2px var(--borde-gordo);
+  text-shadow: 6px 6px 0px var(--borde-gordo);
+  transform: rotate(-2deg);
+}
+
+.subtitulo {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.subtitulo span {
+  color: var(--color-gato);
+  text-decoration: underline;
+}
+
+/* Área de Juego */
+.canvas-wrapper {
+  position: relative;
+  border: 6px solid var(--borde-gordo);
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Burbujas de puntaje */
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.stat-bubble {
   background: white;
-  border: 2px solid black;
+  border: 4px solid var(--borde-gordo);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 4px 4px 0px var(--borde-gordo);
 }
 
-.controles {
-  margin-top: 20px;
+/* Controles D-PAD estilo retro */
+.controls-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding: 0 20px;
 }
 
-button {
-  margin: 5px;
-  padding: 10px 16px;
-  font-size: 18px;
+.d-pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.middle-row {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-mando {
+  width: 60px;
+  height: 60px;
+  background: #eee;
+  border: 4px solid var(--borde-gordo);
+  border-radius: 12px;
+  font-size: 1.5rem;
   cursor: pointer;
-  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px var(--borde-gordo);
+  transition: all 0.1s;
 }
 
+.btn-mando:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--borde-gordo);
+  background: var(--queso);
+}
+
+/* Botón Reiniciar Gigante */
+.btn-reset-cartoon {
+  background: var(--rojo-cartoon);
+  border: 4px solid var(--borde-gordo);
+  padding: 20px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 6px 6px 0px var(--borde-gordo);
+  transition: transform 0.1s;
+}
+
+.btn-reset-cartoon .text {
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Bangers", cursive;
+}
+
+.btn-reset-cartoon:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.btn-reset-cartoon:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px var(--borde-gordo);
+}
+
+/* Mensajes de alerta */
 #mensaje {
-  font-size: 20px;
-  font-weight: bold;
-  color: darkred;
-  margin-top: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  border: 3px solid var(--borde-gordo);
+  border-radius: 10px;
+  color: var(--rojo-cartoon);
+  font-size: 2rem;
+  text-align: center;
+  pointer-events: none;
 }

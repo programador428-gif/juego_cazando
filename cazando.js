@@ -43,6 +43,12 @@ function limpiarCanvas() {
 }
 
 // Movimientos
+window.addEventListener('keydown', function (e) { teclas[e.key] = true; });
+window.addEventListener('keyup', function (e) { teclas[e.key] = false; });
+
+
+iniciarTeclado();
+
 function moverIzquierda() {
     gatoX -= 10;
     actualizarPantalla();
@@ -81,6 +87,8 @@ function detectarColisiones() {
         comidaX = generarAleatorio(0, canvas.width - ANCHO_COMIDA);
         comidaY = generarAleatorio(0, canvas.height - ALTO_COMIDA);
         puntaje++;
+        tiempo = 10;
+        mostrarEnSpan('tiempo', tiempo);
         mostrarEnSpan('puntos', puntaje);
     }
 }
