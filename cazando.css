@@ -1,43 +1,63 @@
-/* Paleta de colores Tom y Jerry */
+/* Paleta de colores Tom y Jerry y variables generales */
 :root {
   --color-gato: #5c7894; /* Gris azulado */
   --color-raton: #966d4f; /* Marrón */
   --queso: #ffcc00;
   --borde-gordo: #222;
   --rojo-cartoon: #e63946;
-  --fondo-suave: #f1faee;
+  --fondo-suave: rgba(
+    241,
+    250,
+    238,
+    0.9
+  ); /* Fondo semi-transparente para legibilidad */
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: "Fredoka One", cursive;
-  background-color: #ffd166;
-  background-image:
-    radial-gradient(#f4a261 20%, transparent 20%),
-    radial-gradient(#f4a261 20%, transparent 20%);
-  background-size: 40px 40px;
-  background-position:
-    0 0,
-    20px 20px;
+
+  /* --- CAMBIO: Integración de la imagen de fondo --- */
+  background-image: url("https://i.pinimg.com/736x/ec/30/eb/ec30eb294c5b724e179b8305262ba0f9.jpg");
+  background-size: cover; /* La imagen cubre toda la pantalla */
+  background-position: center; /* Centrada */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* El fondo no se mueve al hacer scroll */
+  /* ----------------------------------------------- */
+
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  position: relative; /* Necesario para la capa de superposición */
 }
 
+/* Capa oscura encima del fondo para mejorar legibilidad del juego */
+.overlay-fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Oscurece la imagen un 40% */
+  z-index: 1; /* Se sitúa por debajo del juego */
+}
+
+/* Todo el contenido del juego debe estar por encima de la superposición */
 .main-container {
+  position: relative;
+  z-index: 2; /* Por encima de .overlay-fondo */
   width: 90%;
   max-width: 700px;
-  background: white;
+  background: white; /* Caja blanca opaca para el juego */
   border: 6px solid var(--borde-gordo);
   border-radius: 30px;
   padding: 20px;
-  box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.2);
-  position: relative;
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.5); /* Sombra más oscura para dar profundidad sobre el fondo */
 }
 
-/* Título estilo Intro de Caricatura */
+/* --- Título estilo Intro de Caricatura --- */
 .titulo-cartoon {
   font-family: "Bangers", cursive;
   font-size: 5rem;
@@ -62,7 +82,7 @@ body {
   text-decoration: underline;
 }
 
-/* Área de Juego */
+/* --- Área de Juego (Canvas) --- */
 .canvas-wrapper {
   position: relative;
   border: 6px solid var(--borde-gordo);
@@ -78,7 +98,7 @@ canvas {
   height: auto;
 }
 
-/* Burbujas de puntaje */
+/* --- Burbujas de puntaje --- */
 .stats-container {
   display: flex;
   justify-content: center;
@@ -98,7 +118,7 @@ canvas {
   box-shadow: 4px 4px 0px var(--borde-gordo);
 }
 
-/* Controles D-PAD estilo retro */
+/* --- Controles D-PAD estilo retro/cómic --- */
 .controls-section {
   display: flex;
   justify-content: space-between;
@@ -130,13 +150,17 @@ canvas {
   transition: all 0.1s;
 }
 
+.btn-mando:hover {
+  background: #fdfdfd;
+}
+
 .btn-mando:active {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0px var(--borde-gordo);
-  background: var(--queso);
+  background: var(--queso); /* Se vuelve amarillo al pulsar */
 }
 
-/* Botón Reiniciar Gigante */
+/* --- Botón Reiniciar Gigante --- */
 .btn-reset-cartoon {
   background: var(--rojo-cartoon);
   border: 4px solid var(--borde-gordo);
@@ -162,18 +186,20 @@ canvas {
   box-shadow: 2px 2px 0px var(--borde-gordo);
 }
 
-/* Mensajes de alerta */
+/* --- Mensajes de alerta sobreimpresos --- */
 #mensaje {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   padding: 10px 20px;
-  border: 3px solid var(--borde-gordo);
+  border: 4px solid var(--borde-gordo);
   border-radius: 10px;
   color: var(--rojo-cartoon);
-  font-size: 2rem;
+  font-size: 2.2rem;
   text-align: center;
   pointer-events: none;
+  font-family: "Bangers", cursive;
+  -webkit-text-stroke: 1px black;
 }
