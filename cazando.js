@@ -4,6 +4,8 @@ let ctx = canvas.getContext("2d");
 
 const imagenGato = new Image();
 imagenGato.src = 'gato.png';
+const imagenComida = new Image();
+imagenComida.src = 'manzana.png';
 const ALTO_GATO = 50;
 const ANCHO_GATO = 50;
 const ALTO_COMIDA = 20;
@@ -28,17 +30,12 @@ function mostrarEnSpan(id, valor) {
     document.getElementById(id).innerText = valor;
 }
 
-function graficarRectangulo(x, y, ancho, alto, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, ancho, alto);
-}
-
 function graficarGato() {
     ctx.drawImage(imagenGato, gatoX, gatoY, ALTO_GATO, ANCHO_GATO);
 }
 
 function graficarComida() {
-    graficarRectangulo(comidaX, comidaY, ANCHO_COMIDA, ALTO_COMIDA, "red");
+    ctx.drawImage(imagenComida, comidaX, comidaY, ANCHO_COMIDA, ALTO_COMIDA);
 }
 
 function limpiarCanvas() {
@@ -141,6 +138,6 @@ function reiniciar() {
     restarTiempo();
 }
 
-imagenGato.onload = function () {
+imagenComida.onload = function () {
     iniciarJuego();
 }
