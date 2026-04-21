@@ -87,7 +87,7 @@ function detectarColisiones() {
         comidaX = generarAleatorio(0, canvas.width - ANCHO_COMIDA);
         comidaY = generarAleatorio(0, canvas.height - ALTO_COMIDA);
         puntaje++;
-        tiempo = 10;
+        tiempo = 15;
         mostrarEnSpan('tiempo', tiempo);
         mostrarEnSpan('puntos', puntaje);
     }
