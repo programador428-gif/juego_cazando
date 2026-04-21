@@ -13,7 +13,7 @@ let comidaY = canvas.height - ALTO_COMIDA;
 let comidaX = canvas.width - ANCHO_COMIDA;
 
 let puntaje = 0;
-let tiempo = 10;
+let tiempo = 15;
 let temporizador;
 
 // Funciones
