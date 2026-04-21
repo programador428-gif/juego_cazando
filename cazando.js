@@ -2,6 +2,8 @@
 let canvas = document.getElementById("areaJuego");
 let ctx = canvas.getContext("2d");
 
+const imagenGato = new Image();
+imagenGato.src = 'gato.png';
 const ALTO_GATO = 50;
 const ANCHO_GATO = 50;
 const ALTO_COMIDA = 20;
@@ -32,7 +34,7 @@ function graficarRectangulo(x, y, ancho, alto, color) {
 }
 
 function graficarGato() {
-    graficarRectangulo(gatoX, gatoY, ANCHO_GATO, ALTO_GATO, "black");
+    ctx.drawImage(imagenGato, gatoX, gatoY, ALTO_GATO, ANCHO_GATO);
 }
 
 function graficarComida() {
@@ -76,6 +78,7 @@ function actualizarPantalla() {
     graficarGato();
     graficarComida();
     detectarColisiones();
+    requestAnimationFrame(iniciarJuego);
 }
 
 function detectarColisiones() {
@@ -136,4 +139,8 @@ function reiniciar() {
 
     actualizarPantalla();
     restarTiempo();
+}
+
+imagenGato.onload = function () {
+    iniciarJuego();
 }
