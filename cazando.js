@@ -13,6 +13,7 @@ let comidaY = canvas.height - ALTO_COMIDA;
 let comidaX = canvas.width - ANCHO_COMIDA;
 
 let puntaje = 0;
+let tiempoBase = 15;
 let tiempo = 15;
 let temporizador;
 
@@ -87,7 +88,8 @@ function detectarColisiones() {
         comidaX = generarAleatorio(0, canvas.width - ANCHO_COMIDA);
         comidaY = generarAleatorio(0, canvas.height - ALTO_COMIDA);
         puntaje++;
-        tiempo = 15;
+        tiempoBase--;
+        tiempo = tiempoBase;
         mostrarEnSpan('tiempo', tiempo);
         mostrarEnSpan('puntos', puntaje);
     }
