@@ -128,7 +128,7 @@ function iniciarJuego() {
 function reiniciar() {
     clearInterval(temporizador);
     puntaje = 0;
-    tiempo = 10;
+    tiempo = 15;
     gatoX = canvas.width / 2 - ANCHO_GATO / 2;
     gatoY = canvas.height / 2 - ALTO_GATO;
     comidaX = canvas.width - ANCHO_COMIDA;
